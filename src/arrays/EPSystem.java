@@ -9,7 +9,7 @@ public class EPSystem
 	public static void main(String[] args)
 	{
 				
-	// single dimensional arrays to hold list of ip address values.
+	// single dimensional arrays to hold list of email address and password values.
 			
 		String[] emails = { "test@gmail.com", "demo@gmail.com", "sample@gmail.com", "run@gmail.com" };
 		String[] passwords = { "Test100&", "Demo200&", "Sample300&", "Run400!" };
@@ -30,6 +30,8 @@ public class EPSystem
 						
 		    System.out.println("Enter choice [1-3]: ");
 		    int choice = input.nextInt();
+		 
+		    // if invalid choice value is entered display prompt for valid entry.
 		    
 		    if (choice != 1 && choice != 2 && choice != 3 )
 		    {
@@ -38,6 +40,8 @@ public class EPSystem
 	    	
 		    }
 		     
+		    //if choice value is 3 then terminate the program else continue.
+		    
 		    if (choice == 3 ) 
 		    {
 		    	System.out.println("Terminated");
@@ -46,12 +50,14 @@ public class EPSystem
 		    				
 		    }
 			
-			
+			// get the email address to be searched from the user
+		    
 			System.out.println("Enter an email address : ");			
 						
 			Scanner myObj = new Scanner(System.in);
 			String useremail = myObj.nextLine();
 			
+			//call the method to process the show and update functionality based on email address.
 			
 			findemailaddress(emails,passwords,useremail,choice);
 			
@@ -62,11 +68,14 @@ public class EPSystem
 	{
 			int match = 0;
 			
-			// find a userIp
+			// find the email address in the list of emails (emails).
 			
 			for (int index = 0; index < emails.length; index++)
 			{
-				// match user given userId with existing userids
+				// match user given email id  with existing email ids.
+				// if choice is 1 the show the corresponding password.
+				// if choice is 2 the get new password and update the password.
+				
 				if (emails[index].equals(useremail)) 
 				{
 					switch(choice) 
@@ -95,7 +104,7 @@ public class EPSystem
 									
 				}
 			}
-
+			//if email id entered by the user is not found then display the below error message.
 			
 			if (match == 0) 
 			{

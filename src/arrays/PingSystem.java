@@ -9,7 +9,7 @@ public class PingSystem
 	public static void main(String[] args)
 	{
 				
-	// single dimensional arrays to hold list of ip address values.
+		// single dimensional arrays to hold list of ip address values.
 			
 			String[] ipAddresses = { "192.168.0.1", "127.0.0.1", "133.192.31.42", "192.342.0.5", "145.154.42.58" };
 						
@@ -23,17 +23,15 @@ public class PingSystem
 		    System.out.println("2 --> Replace Ip Address");
 		    System.out.println("3 --> Terminate");
 		    
-		    
+		   		    
 			while (until) 
 			{
-			//System.out.println("Enter replace Ip Address ");	
-			//System.out.println("Enter ping Ip Address ");
-			
-			//Scanner input = new Scanner(System.in);
-			
+		//get the choice from the user
 			
 		    System.out.println("Enter choice [1-3]: ");
 		    int choice = input.nextInt();
+		    
+		    // if invalid choice value is entered display prompt for valid entry.
 		    
 		    if (choice != 1 && choice != 2 && choice != 3 )
 		    {
@@ -41,6 +39,8 @@ public class PingSystem
 		    	continue;
 	    	
 		    }
+		    
+		    //if choice value is 3 then terminate the program else continue.
 		     
 		    if (choice == 3 ) 
 		    {
@@ -50,16 +50,17 @@ public class PingSystem
 		    				
 		    }
 			
-			//
+		 // get the ip address to be searched from the user
+		    
 			System.out.println("Enter a Ip Address : ");			
 						
 			Scanner myObj = new Scanner(System.in);
 			String userIp = myObj.nextLine();
 			
+			//call the method to process the show and update functionality based on ip address.
 			
 			findIpaddress(ipAddresses,userIp,choice);
 			
-			//replaceip();
 			}
 	}
 	
@@ -67,11 +68,14 @@ public class PingSystem
 	{
 			int match = 0;
 			
-			// find a userIp
+			// find the email address in the list of ip addresses (ipAddresses).
 			
 			for (int index = 0; index < ipAddresses.length; index++)
 			{
-				// match user given userId with existing userids
+				// match user given email id  with existing ips.
+				// if choice is 1 the ping ip message displayed.
+				// if choice is 2 the get new ip and update the corresponding ip with new ip.
+				
 				if (ipAddresses[index].equals(userIp)) 
 				{
 					switch(choice) 
@@ -102,6 +106,7 @@ public class PingSystem
 				}
 			}
 
+			//if ip entered by the user is not found then display the below error message.
 			
 			if (match == 0) 
 			{
