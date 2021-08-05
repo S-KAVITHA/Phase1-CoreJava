@@ -20,7 +20,7 @@ public class EPSystem
 			System.out.println("-----------------------------------------");
 			System.out.println("    :: Welcome to Security System :: ");
 			System.out.println("-----------------------------------------");
-			System.out.println("1 --> Fetch password");
+			System.out.println("1 --> Show password");
 		    System.out.println("2 --> Replace password");
 		    System.out.println("3 --> Terminate");
 		    
