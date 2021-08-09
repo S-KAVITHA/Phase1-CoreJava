@@ -25,22 +25,38 @@ public class TicketList
 		listOfTickets.add(ticket3);
 		listOfTickets.add(ticket1);
 		
+		System.out.println("Ticket addition");
+		System.out.println(listOfTickets);
+		System.out.println("---------------------------------");
 		
-		// insert data at index
+		
+			// insert data at index
 		listOfTickets.add(0, ticket4);
+		
+		
+		System.out.println("Ticket insertion at index 0");
+		System.out.println(listOfTickets);
+		System.out.println("---------------------------------");
+		
 		
 		// replace 
 		listOfTickets.set(1, ticket5);
 		System.out.println(listOfTickets);
 		
-		System.out.println("---");
-		//iterate over list
+		System.out.println("Ticket replaced at index 1");
+		System.out.println(listOfTickets);
+		System.out.println("---------------------------------");
 		
-		Iterator<Ticket> itr = listOfTickets.iterator();
-		while(itr.hasNext()) {
-			System.out.println(itr.next());
-		}
 		
+		listOfTickets.remove(ticket3);
+		System.out.println("Ticket deletion at index 1");
+		System.out.println(listOfTickets);
+		System.out.println("---------------------------------");
+		
+		
+		System.out.println("Ticket names display");
+		System.out.println(listOfTickets);
+		System.out.println("---------------------------------");
 				
 		listOfTickets.get(0).name ="Noman";
 		
@@ -49,6 +65,13 @@ public class TicketList
 			System.out.println(emp.name);
 		}
 
+		
+	//iterate over list
+		
+	Iterator<Ticket> itr = listOfTickets.iterator();
+	while(itr.hasNext()) 
+	{
+		System.out.println(itr.next());
 	}
-
+	}
 }
