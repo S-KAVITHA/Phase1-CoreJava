@@ -1,17 +1,17 @@
-package collections.map;
+package collections;
 
 public class Account {
 	
 	//properties
-	private int id;
+	private Long id;
 	private String name;
 	private double balance;
 	
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -27,7 +27,7 @@ public class Account {
 		this.balance = balance;
 	}
 	
-	public Account(int id, String name, double balance) {
+	public Account(Long id, String name, double balance) {
 		super();
 		this.id = id;
 		this.name = name;

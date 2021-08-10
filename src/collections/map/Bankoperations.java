@@ -1,7 +1,5 @@
 package collections;
 
-
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -9,112 +7,232 @@ import java.util.Iterator;
 
 public class Bankoperations 
 {
-
 	public static void main(String[] args)
 	{
 		
-		boolean loopagain = true;
+		// get the input from user
 		
-		double initialBal = 0d ;
+		boolean loopagain = true;
+		boolean inloop = true;
+		
+		double initialBal = 0  ;
 		
 		System.out.println("-----------------------------------------");
 		System.out.println("    :: Welcome to Banking System :: ");
 		System.out.println("-----------------------------------------");
 		    
 		System.out.println("1 --> Open account");
-	    System.out.println("2 --> Deposit");
-	    System.out.println("3 --> Withdrawal");
-	    System.out.println("3 --> Close account");
-	    System.out.println("3 --> Terminate");
+	    System.out.println("2 --> Show balance");
+	    System.out.println("3 --> Deposit");
+	    System.out.println("4 --> Withdrawal");
+	    System.out.println("5 --> Close account");
+	    System.out.println("6 --> Terminate");
 	    
-		Map<Long, Account> accountMap = new LinkedHashMap<Long, Account>();
+	    // create map object to store account details with key as account no.
+	    
+		Map<Long,Account> accountMap = new LinkedHashMap<Long,Account>();
 		
+		//	loop through to get account information from user and store the details into map object.
 	  do
 		{
 	    
-	    	Scanner getinp = new Scanner(System.in);
+	    	Scanner myobj = new Scanner(System.in);	
+	    	System.out.println("\nEnter choice [1-7): ");
+	    	int choice = myobj.nextInt();	
 	    	
-	    	System.out.println("Enter choice [1-3]: ");
-	    	int choice = getinp.nextInt();
-	 
-	    	if (choice == 1)
+	    	switch (choice)
 	    	{
-	    		Scanner myobj = new Scanner(System.in);
-    			 			     
+	    	case 1:
+	    	 do
+	    	 {
+	    			     
 	    		System.out.println("Enter Account no     : ");
 	    		Long accountNo = myobj.nextLong();
 			 				     
 	    		System.out.println("Enter holder name :");
 	    		myobj.nextLine();
 			    String acctName = myobj.nextLine();
-	    		
+			   	    		
 	    	    Account account1 = new Account(accountNo,acctName, initialBal);
-	    	
-		
-	    	    Account account2 = new Account(1002L, "Jeet Kumar", 90000.50d);
-	    	//Account account3 = new Account(1003, "Emma Kim", 50000d);
-	    	//Account account4 = new Account(1004, "David Miller", 60000d);
-	    	//Account account5 = new Account(1005, "Tony Stark", 40000.50d);
-		    	
-	    	
 	    	    accountMap.put(accountNo, account1);
-	    	// accountMap.put(7000002L, account2);
-	    	}	
-	    	System.out.println("Enter account details (y/n)?");
-	    	String answer = getinp.nextLine();
+	    	   
+	    	    System.out.println("Enter account details (y/n)?");
+	    	    
+	    	    String answer = myobj.nextLine();
+	    	  
         	
-	    	if (answer.equals("y") || answer.equals("Y"))
-       		{
-       			continue;
-       		}    
-	    	else
-        	{
-       			break;
-        	}
-       	}
-	
-		while(loopagain);
-	
-	    	
-		//accountMap.put(7000002L, account2);
-		//accountMap.put(7000003L, account3);
-		//accountMap.put(7000004L, account4);
-		//accountMap.put(7000005L, account5);
-		
-		//showas(accountMap);
-	    for(Map.Entry<Long, Account> entry : accountMap.entrySet())
-	    {
-	    		Long acctNum = entry.getKey();
-	    		System.out.println("-----------------");
-	    		System.out.println("Account Number : "+entry.getKey());
-	    		System.out.println("Account Name : "+entry.getValue().getName());
-	    		System.out.println("Account Balance : "+entry.getValue().getBalance());
-			
-	    		Scanner input = new Scanner(System.in);
-	    		System.out.println("Amount to withdraw : ");
-	    		double withdrawAmt = input.nextDouble();
-	    		double acctBalance = entry.getValue().getBalance();
-	    		System.out.println(acctBalance);
-			
-	    		if (acctBalance>= withdrawAmt)
-	    		{
-	    			acctBalance -= withdrawAmt;
-	    			entry.setValue(entry.getValue()).setBalance(acctBalance);
-				
-	    			System.out.println("\n You Withdrew    : "+withdrawAmt);
-	    			System.out.println("\n Account Balance : "+entry.getValue().getBalance());
-				
-	    		}
-	    		else
-	    		{
-	    			System.out.println("\n Insufficient balance  ");
-	    		}          
+	    	    if (answer.equals("y") || answer.equals("Y"))
+	    	    {
+	    	    	continue;
+	    	    }    
+	    	    else
+	    	    {
+	    	    	break;
+	    	    }
+	    	 }
+	    	 while(inloop);
+	    		break;	
+	    		
+	    	case 2:
+	    		
+	    		// show account balance with the user input account no.
+	    		
+	    		 System.out.println("Enter account no: ");
+		   		 Long getAcctnum = myobj.nextLong();
+	    	 	 showAccount(accountMap,getAcctnum);
+	    		 break;
+	    			
+	    	case 3:
+	    		
+	    		//deposit to the account entered by the user.
+	    		
+	    		 System.out.println("Enter the deopsit account no: ");
+		   		 Long depAcctnum = myobj.nextLong();
+		   		 deposits(accountMap,depAcctnum);
+		   		 break;
+	    		
+	    	case 4:
+	    		
+	    		//withdraw amount from the user entered account.
+	    		
+	    		 System.out.println("Enter the withdrawal account no: ");
+		   		 Long withdrawAcct = myobj.nextLong();
+		   		 withdrawal(accountMap,withdrawAcct);
+		   		 break;
+		   		 
+	    	case 5:
+	    		
+	    		// close the account entered by the user.
+	    		
+	    		System.out.println("Enter the closure account no: ");
+	    		Long closeAcct = myobj.nextLong();
+	    		closeaccount(accountMap,closeAcct);
+	    		break;
+	    		
+	    	case 6:
+	    		return;
 	    	}
-
+		}
+ 
+		while(loopagain);
+	   }
+	    
+	
+	private static void showAccount(Map<Long,Account> accountMap,Long getAcctnum)
+	{
+		// if account is present then display the details
 		
-	    
-	    
-		//System.out.println(accountMap.get(7000001L));
+		if (accountMap.containsKey(getAcctnum))
+		{
+			System.out.println("Account details:: ");
+			System.out.println("------------------");
+			System.out.println("Account Number     : "+getAcctnum);
+			System.out.println("Account Name       : "+accountMap.get(getAcctnum).getName());
+			System.out.println("Account Balance    : "+accountMap.get(getAcctnum).getBalance());
+			System.out.println("--------------------------------------");
+		}
+		else
+	    {
+	    	System.out.println("\nInvalid account number ");
+	    } 		
 	}
-//showas(Map<Long, Account> accountMap){}
-}
+		
+		 @SuppressWarnings("resource")
+	public static void deposits(Map<Long,Account> accountMap,Long depAcctnum)
+	{
+	
+		// if deposit account exists then add amount into the account balance.
+		if (accountMap.containsKey(depAcctnum))
+	 	{	 
+			Scanner input = new Scanner(System.in);
+			System.out.println("Amount to deposit : ");
+			double depositAmt = input.nextDouble();
+	   	
+			Account acctfetch =accountMap.get(depAcctnum);
+	    		
+			double acctBalance = acctfetch.getBalance();
+	    		
+	   
+		    acctBalance += depositAmt;		    				
+		    acctfetch.setBalance(acctBalance);
+		    						
+		    System.out.println("\nYou deposited    : "+depositAmt);
+		    System.out.println("\nAccount Balance  : "+acctBalance);
+		    		
+		    System.out.println("\n"+ accountMap);
+		    						
+	    }
+		else
+    	{
+			System.out.println("\nInvalid account number  ");
+		 } 
+		    	    
+	}
+		 
+	public static void withdrawal(Map<Long, Account> accountMap , Long withdrawAcct)
+	{
+	   	
+		// if withdrawal account exists then deduct the amount from the account balance.
+		if (accountMap.containsKey(withdrawAcct))
+		{
+			
+			Scanner input1 = new Scanner(System.in);
+			System.out.println("Amount to withdraw : ");
+			double withdrawAmt = input1.nextDouble();
+	   	
+			Account acctfetch1 =accountMap.get(withdrawAcct);
+			double acctBalance1 = acctfetch1.getBalance();
+	    	
+	   		if (acctBalance1>= withdrawAmt)
+	   		{
+	   			acctBalance1 -= withdrawAmt;		    				
+	   			acctfetch1.setBalance(acctBalance1);
+	    			   			    						
+	   			System.out.println("\nYou Withdrew    : "+withdrawAmt);
+	   			System.out.println("\nAccount Balance : "+acctBalance1);
+	    		
+	   			System.out.println("\n"+accountMap);
+	   		}
+	   		else 
+	   		{
+	   			System.out.println("\nInsufficient balance  ");
+	   		}
+	   	} 
+	   	else
+	   	{
+	   		System.out.println("\nInvalid account number  ");
+	   	} 
+	    	
+	}  
+	
+	public static void closeaccount(Map<Long, Account> accountMap , Long closeAcct)
+	{
+		
+		// if account is exists then close the account.
+		
+		if (accountMap.containsKey(closeAcct))
+       	{ 
+			accountMap.remove(closeAcct);
+			System.out.println(accountMap);
+       	}
+		else
+	   	{
+	   		System.out.println("\nInvalid account number  ");
+	   	}
+	   	
+	}
+}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
