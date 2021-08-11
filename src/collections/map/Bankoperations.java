@@ -37,7 +37,7 @@ public class Bankoperations
 		{
 	    
 	    	Scanner myobj = new Scanner(System.in);	
-	    	System.out.println("\nEnter choice [1-7): ");
+	    	System.out.println("\nEnter choice [1-6]): ");
 	    	int choice = myobj.nextInt();	
 	    	
 	    	switch (choice)
