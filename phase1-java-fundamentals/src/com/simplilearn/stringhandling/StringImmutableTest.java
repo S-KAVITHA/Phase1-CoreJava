@@ -1,4 +1,4 @@
-package com.simplilearn.stringhandling;
+package stringhandling;
 
 public class StringImmutableTest {
 
@@ -9,11 +9,22 @@ public class StringImmutableTest {
 		
 		String username = "John";
 		
-		// concat() -> update / modify string java ( appends a new text at the end of the string.)
-		String response  = username.concat(" Miller");
+		username.concat(" Snow");
 		
-		System.out.println("Old username : "+username);
-		System.out.println("New username : "+response);
+		// concat to string is done. print will still refer to old value because strings are immutable.
+		System.out.println(username); // old name -> old string 
+		
+		
+		
+// two objects are created but user.name reference variable still refers to "John" not to "John Snow".
+// explicitly assign it to the reference variable, it will refer to "John Snow" object.
+		String reponse = username.concat(" Snow");
+		
+		username = reponse;
+		
+		System.out.println(reponse);
+		System.out.println(username);// new name  -> new String
+
 	}
 
 }

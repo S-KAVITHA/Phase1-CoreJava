@@ -1,39 +1,38 @@
-package com.simplilearn.typecasting;
+package typecasting;
 
 import java.util.Scanner;
 
 public class NumericDataConvertor {
-
+	
 	public static void main(String[] args) {
 		
-		// step 1: collect user input as number -> from console.
+		// step 1. collect input from user console.
 		Scanner input = new Scanner(System.in);
-		
-		System.out.println("--------------------------------------------");
-		System.out.println(" Welcome to Numeric Data type Convertor. ");
-		System.out.println(" Enter a integer number value.");
-		System.out.println("--------------------------------------------");
-		
+		System.out.println("--------------------------------");
+		System.out.println(" :: Welcome to numeric convertor :: ");
+		System.out.println(" :: Enter a integer number vaule :: ");
+		System.out.println("--------------------------------");
 		int userInput = input.nextInt();
 		
-		// step 2 : convert values into different type.
 		
-		System.out.println("User Given Input :: "+userInput);
+		// step 2. convert user input into different 
+		// implicit type cast
+		long bigValue = userInput;
+		float floatValue = userInput;
+		double doubleValue = userInput;
 		
-		long bigValue = userInput;       // implicit type cast
-		float floatValue = userInput ;   // implicit type cast
-		double doubleValue = userInput;  // implicit type cast
+		// explicit type cast
+		byte byteValue = (byte) userInput;
+		short shortValue = (short) userInput;
 		
-		byte byteValue = (byte) userInput; // explicit type cast
-		short shortValue = (short) userInput; // explicit data type cast.
+		System.out.println("-----Implict & Explicit Converted values -----");
+		System.out.println("Byte Value   : "+byteValue);
+		System.out.println("Short Value  : "+shortValue);
+		System.out.println("Long Value   : "+bigValue);
+		System.out.println("Float Value  : "+floatValue);
+		System.out.println("Double Value : "+doubleValue);
 		
-		System.out.println("--- Converted value ---");
-		System.out.println("Long value :: " + bigValue);
-		System.out.println("Float value :: " + floatValue);
-		System.out.println("Double value :: " + doubleValue);
-		
-		System.out.println("Short value :: " + shortValue);
-		System.out.println("Byte value :: " + byteValue);
+
 	}
 
 }

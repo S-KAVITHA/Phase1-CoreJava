@@ -1,26 +1,30 @@
-package com.simplilearn.stringhandling;
+package stringhandling;
 
 public class StringBuilderDemo {
 
 	public static void main(String[] args) {
 
-		// Mutable String with String Builder :: not thread safe
-		StringBuilder message = new StringBuilder("Today is a wonderfull day !");
+		// mutable string
+		StringBuilder message = new StringBuilder("Today is a good day!");
+
 		System.out.println(message);
-		
-		//append
-		message.append(" Happy eating !");
+
+		// append new string text
+		message.append(" Happy learning !");
 		System.out.println(message);
-		
-		// replace 
-		message.replace(0, 4, "All");
+
+		// replace text
+		message.replace(0, 1, "t");
 		System.out.println(message);
-		
-		// delete -> delete text or char in string
-		message.delete(0, 4);
+
+		// delete text
+		message.delete(0, 2);
 		System.out.println(message);
-		
-		message.reverse();
+
+		// insert text
+		message.insert(0,  "Welcome, ");
 		System.out.println(message);
+
 	}
+
 }

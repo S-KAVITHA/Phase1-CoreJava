@@ -1,4 +1,4 @@
-package com.simplilearn.filehandling;
+package filehandling;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -8,27 +8,27 @@ public class ReadFileDemo {
 
 	public static void main(String[] args) {
 		
-		ReadFileDemo obj = new ReadFileDemo();
-		obj.readFile("output.txt");
+		readFile("test.txt");
+
 	}
 
-	//read file
-	void readFile(String filename) {
-		
-		FileInputStream fileIn;
+	
+	private static void readFile(String filename) {
 		try {
-			int i = 0;
-			fileIn = new FileInputStream(filename);
-			// System.out.println((char)fileIn.read());
-			while((i=fileIn.read()) !=-1) {
-				System.out.print((char)i);
+			@SuppressWarnings("resource")
+			FileInputStream fileInputStream = new FileInputStream(filename);
+			
+			int count = 0;
+			while((count=fileInputStream.read()) !=-1) {
+				System.out.print((char)count);
 			}
-			fileIn.close();
+			// int i = fileInputStream.read();
+			//System.out.println((char)i);
+			
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("File Not Found Exception !");
 		} catch (IOException e) {
-			e.printStackTrace();
-		}	
-		
+			System.out.println("File Read Exception !");
+		}
 	}
 }

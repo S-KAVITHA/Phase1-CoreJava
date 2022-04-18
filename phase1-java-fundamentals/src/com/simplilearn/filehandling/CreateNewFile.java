@@ -1,4 +1,4 @@
-package com.simplilearn.filehandling;
+package filehandling;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,49 +10,53 @@ public class CreateNewFile {
 
 	public static void main(String[] args) {
 		
-		CreateNewFile obj =  new CreateNewFile();
+		createFileUsingFileClass("data.txt");
 		
-		obj.createFile("output.txt");
-		
-		obj.createFile2("output2.txt");
+		createFileUsingFileOutStream("test.txt");
 	}
 	
-	// create file using File cLass
-	public void createFile(String filename) {	
+	
+	// create a file using File class
+	private static void createFileUsingFileClass(String filename) {
+		// File 
+		File file = new File(filename);
 		
 		try {
-			
-			File file  = new File(filename);
-			if(file.createNewFile()) {
+			if(file.createNewFile() ) {
 				System.out.println("File is created !");
 			} else {
 				System.out.println("File already exist !");
 			}
 			
-			// Write  Content to file : character stream
-			FileWriter writer = new FileWriter(file);
-			writer.write("Test data to file inserted !");
-			writer.close();
+			// Write content to file  -> FileWriter -> Character stream
+			FileWriter  fileWriter = new FileWriter(file);
+			fileWriter.write("Test Data to file !");
+			fileWriter.close();
 			
 		} catch (IOException e) {
 			System.out.println("File Creation Failed !");
-		}		
+		}
+		
 	}
 	
-	//create file using FileOutputStream : insert data as byte stream
-	public void createFile2 (String filename) {
+	private static void createFileUsingFileOutStream(String filename) {
 		
 		try {
+			String data ="Today is a wonderful day!";
 			
-			String data = "Sample text data into file! ";
 			FileOutputStream out = new FileOutputStream(filename);
-			out.write(data.getBytes());
-			out.close();
 			
+			// write data with output stream
+			out.write(data.getBytes());
+			System.out.println("File is created and data is Written !");
+			
+			out.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("File Creation Failed !");
+			System.out.println("File Operation is Failed !");
 		} catch (IOException e) {
-			System.out.println("File Write Operation Failed !");
+			System.out.println("File Operation is Failed !");
 		}
 	}
+
 }
+

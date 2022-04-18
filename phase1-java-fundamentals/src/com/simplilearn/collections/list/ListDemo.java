@@ -1,6 +1,7 @@
-package com.simplilearn.collections.list;
+package collections.list;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
@@ -9,59 +10,49 @@ import java.util.Vector;
 public class ListDemo {
 
 	public static void main(String[] args) {
-
-		// List -> Order collection of data elements which allows duplicates elements.
-		// List (interface) -> implementation classes -> ArrayList, LinkedList , Vector , Stack
 		
-		//syntax:
-		List<String> list1 = new ArrayList<String>();  // not thread safe -> ordered data -> read operation
-		List<String> list2 = new LinkedList<String>();  // not thread safe -> ordered data -> update(insert/delete) operation
-		List<String> list3 = new Vector<String>();   // thread safe -> similar to arraylist.
-		List<String> list4 = new Stack<String>();    // old collection api // legacy collections
+		// List  -> Order collection of data with duplicates elements.
+		// List (interface) ->  imp classes -> ArrayList, LinkedList , Vector , Stack
 		
-		// array list
-		List<String> listOfCompanies = new ArrayList<String>();
-		listOfCompanies.add("DELL");
-		listOfCompanies.add("MCIT");
-		listOfCompanies.add("SIMPLILEARN");
-		listOfCompanies.add("WIPRO");
-		listOfCompanies.add("SIMPLILEARN");
-		// insert 
-		listOfCompanies.add(3,"INFOSYS");
-		System.out.println(listOfCompanies);
-		System.out.println(listOfCompanies.get(1));
+		// delecration
+		List<String> list1 = new ArrayList<String>();  // backed by dynamic array, not thread safe, read operations
+		List<String> list2 = new LinkedList<String>();  //backed by doubly linkedlist ,not thread safe, -> insert, delete,replace
+		List<String> list3 = new Vector<String>();  // thread safe collection
+		List<String> list4 = new Stack<String>();   // thread safe collection
 		
-		for(String comp : listOfCompanies) {
-			System.out.println(comp);
+		List<String> namesList = new Vector<String>();
+		namesList.add("Bob");
+		namesList.add("Mike");
+		namesList.add("John");
+		namesList.add("Bob");
+		namesList.add("Mark");
+		
+		System.out.println(namesList);
+		System.out.println("The element at index 2 : "+namesList.get(2));
+		
+		System.out.println("----------------");
+		namesList.add(2, "Mark");
+		System.out.println(namesList);
+		System.out.println("The element at index 2 : "+namesList.get(2));
+		
+		System.out.println("----------------");
+		// iteration  on list
+		Iterator<String> itr = namesList.iterator();
+		while(itr.hasNext()) {
+			System.out.println(itr.next());
 		}
 		
-		System.out.println("-----------------");
-		List<String> listOfCities = new LinkedList<String>();
-		listOfCities.add("MUMBAI");
-		listOfCities.add("NEWYORK");
-		listOfCities.add("PUNE");
-		listOfCities.add("NEWYORK");
-		listOfCities.add("HYDERABAD");
+		System.out.println("----------------");
+		// enhanced for loop
+		for(String name : namesList) {
+			System.out.println(name);
+		}
 		
-		System.out.println(listOfCities);
-		System.out.println(listOfCities.get(1));
-		
-		
-		System.out.println("-----------------");
-		List<String> listOfFruits = new Vector<String>();
-		listOfFruits.add("APPLE");
-		listOfFruits.add("ORANGE");
-		listOfFruits.add("KIWI");
-		listOfFruits.add("ORANGE");
-		listOfFruits.add("APPLE");
-		
-		System.out.println(listOfFruits);
-		System.out.println(listOfFruits.get(1));
-		
-		
-		
-		
-		
+		System.out.println("----------------");
+		// counter for loop
+		for(int index=0 ; index< namesList.size() ; index++) {
+			System.out.println("The index " + index + " and name : "+namesList.get(index));
+		}
 	}
 
 }

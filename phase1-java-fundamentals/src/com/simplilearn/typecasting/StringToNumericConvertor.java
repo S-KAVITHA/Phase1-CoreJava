@@ -1,31 +1,24 @@
-package com.simplilearn.typecasting;
+package typecasting;
 
-public class StringToNumericConvertor {
-
-	public static void main(String[] args) {
-		
-		// String to Numeric conversion : Note String value should be a convertible value.
-		
-		String price = "123";  // string literal => convertible value.
-		
-		String amount = "126abc";  // non-convertible string.
-		
-		// convert string -> float
-		// Use Wrapper class for conversion :- int, float ,double  >-> Integer , Float, Double etc.
-		float floatPrice = Float.parseFloat(price);
-		
-		// convert string to int type
-		int intPrice = Integer.parseInt(price);
-		
-		double doublePrice = Double.parseDouble(price);
-		
-		// Convention fails due to non-convertible string.
-//		double doubleAmount = Double.parseDouble(amount);
-		
-		System.out.println("Float Price :: "+floatPrice);
-		System.out.println("Double Price :: "+doublePrice);
-		System.out.println("Integer Price :: "+intPrice);
-
-	}
-
+public class StringtoNumericConvertor {
+			
+		public static void main(String[] args) {
+			// String to numeric .
+			String username = "abcd1234"; //non convertible string
+			String price ="123.27";  // convertible string
+			String amount ="1277";   // convertible string
+			
+			// string(non-primitive type)  to int (primitive type)   => Wrapper classes
+			int intAmount  = Integer.parseInt(amount);
+			
+			double doublePrice = Double.parseDouble(price);
+			
+			// Non convertible string :> NumberFormatException
+			// int result = Integer.parseInt(username);
+			
+			System.out.println("Integer Amount : "+intAmount);
+			
+			System.out.println("Double Price   : "+doublePrice);
+			
+		}
 }
